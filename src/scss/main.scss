@@ -1,1 +1,132 @@
 // This is where you can import other stylesheets or write your scss code
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin centerer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+@mixin hide-all {
+    display: none
+}
+
+@mixin triangle($direction:up, $color:rgb(255, 0, 0), $size:100px) {
+    @if ($direction == up){
+    border-color: transparent transparent $color;
+    border-style: solid;
+    border-width: 0 $size $size;
+    height: 0;
+    width: 0;
+    }
+}
+
+
+@mixin fade-in($time:2s) {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    
+    animation: boxx $time infinite alternate-reverse;
+
+
+    @keyframes boxx {
+        from,to {
+          background-color: yellow;
+        }
+      
+        50% {
+          background-color: transparent;
+        }
+      }
+}
+
+
+@mixin font-size($min){ font-size: $min; }
+
+
+// reset-list
+ul {
+
+    @include reset-list ;
+
+    
+}
+
+
+// center
+
+
+
+  .page--center {
+    @include centerer;
+  }
+
+// hide element
+
+.hidden {
+
+    @include hide-all;
+}
+
+// triangle
+
+.triangle-example {
+
+    @include triangle(up, red);
+}
+
+
+// Fade in animation
+
+.reveal-animation-example {
+
+    
+    
+
+    .box {
+
+       
+        @include fade-in(0.5s) 
+        
+    }
+
+    
+}
+
+// font sizing
+.headline {
+    font-size: font-size(32px);
+}
+
+.text-xs {
+    @include font-size(12px);
+}
+
+.text-sm {
+    @include font-size(14px);
+}
+
+.text-m {
+    @include font-size(16px);
+}
+
+.text-l {
+    @include font-size(32px);
+}
+
+.text-xl {
+    @include font-size(48px);
+}
+
+.text-xxl {
+    @include font-size(61px);
+}
+
+
+
